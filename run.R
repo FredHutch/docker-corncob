@@ -80,5 +80,5 @@ corn_tib <- do.call(rbind, lapply(
     mc.cores = numCores
   )))}))
 
-print(sprintf("Writing out %s rows to %s", nrow(corn_tib, args[3])))
+print(sprintf("Writing out %s rows to %s", nrow(corn_tib), args[3]))
 write_csv(corn_tib, args[3])
