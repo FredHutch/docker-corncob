@@ -11,6 +11,7 @@ RUN R -e "install.packages('curl', repos = 'http://cran.us.r-project.org'); libr
 RUN R -e "install.packages('httr', repos = 'http://cran.us.r-project.org'); library(httr)"
 RUN R -e "install.packages('usethis', repos = 'http://cran.us.r-project.org'); library(usethis)"
 RUN R -e "install.packages('devtools', repos = 'http://cran.us.r-project.org'); library(devtools)"
+RUN R -e "install.packages('tidyverse', repos = 'http://cran.us.r-project.org'); library(tidyverse)"
 
 # Install corncob
 RUN R -e "library(devtools); devtools::install_github('bryandmartin/corncob')"
