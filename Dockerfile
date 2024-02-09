@@ -16,3 +16,6 @@ RUN R -e "install.packages('vroom', repos = 'http://cran.us.r-project.org'); lib
 
 # Install corncob
 RUN R -e "library(devtools); devtools::install_github('bryandmartin/corncob')"
+
+# Install phyloseq
+RUN R -e "install.packages('BiocManager'); BiocManager::install('phyloseq'); library(phyloseq)"
