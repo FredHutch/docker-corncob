@@ -4,12 +4,15 @@ MAINTAINER sminot@fredhutch.org
 # Install prerequisites and R
 RUN apt update && \
     ln -fs /usr/share/zoneinfo/Europe/Dublin /etc/localtime && \
-    apt-get install -y build-essential wget unzip r-base libssl-dev libxml2-dev libcurl4-openssl-dev
+    apt-get install -y build-essential wget unzip r-base libssl-dev \
+    libxml2-dev libcurl4-openssl-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev \
+    libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev libglpk-dev
 
 # Install devtools
 RUN R -e "install.packages('curl', repos = 'http://cran.us.r-project.org'); library(curl)"
 RUN R -e "install.packages('httr', repos = 'http://cran.us.r-project.org'); library(httr)"
 RUN R -e "install.packages('usethis', repos = 'http://cran.us.r-project.org'); library(usethis)"
+RUN R -e "install.packages('ragg', repos = 'http://cran.us.r-project.org'); library(ragg)"
 RUN R -e "install.packages('pkgdown', repos = 'http://cran.us.r-project.org'); library(pkgdown)"
 RUN R -e "install.packages('devtools', repos = 'http://cran.us.r-project.org'); library(devtools)"
 RUN R -e "install.packages('tidyverse', repos = 'http://cran.us.r-project.org'); library(tidyverse)"
@@ -19,4 +22,5 @@ RUN R -e "install.packages('vroom', repos = 'http://cran.us.r-project.org'); lib
 RUN R -e "library(devtools); devtools::install_github('bryandmartin/corncob')"
 
 # Install phyloseq
+RUN R -e "install.packages('igraph', dependencies=TRUE); library(igraph)"
 RUN R -e "install.packages('BiocManager'); BiocManager::install('phyloseq'); library(phyloseq)"
